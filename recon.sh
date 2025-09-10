@@ -29,6 +29,11 @@ while read url; do
 done < "$OUTPUT_DIR/live_subdomains.txt"
 
 # Step 4: Run LinkFinder on each live domain
+# git clone https://github.com/GerbenJavado/LinkFinder.git
+# cd LinkFinder
+# python setup.py install
+# pip3 install -r requirements.txt
+
 echo "[+] Extracting JS endpoints with LinkFinder..."
 cd "$TOOLS_DIR/LinkFinder"
 while read url; do
@@ -38,6 +43,9 @@ done < "$OUTPUT_DIR/live_subdomains.txt"
 cd "$TOOLS_DIR"
 
 # Step 5: SocialHunter for broken link hijacking
+# wget https://github.com/utkusen/socialhunter/releases/download/v0.1.1/socialhunter_0.1.1_Linux_amd64.tar.gz
+# tar xzvf socialhunter_0.1.1_Linux_amd64.tar.gz
+
 echo "[+] Running SocialHunter..."
 ./socialhunter -f "$OUTPUT_DIR/live_subdomains.txt" > "$OUTPUT_DIR/socialhunter.txt"
 
